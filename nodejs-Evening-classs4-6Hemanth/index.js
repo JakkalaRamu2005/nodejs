@@ -21,8 +21,6 @@ let nextId = 4;
 app.get("/students", (request, response) => {
     const { name, section } = request.query;
 
-
-
     let copyOfStudents = [...students]
     if (name) {
         copyOfStudents = copyOfStudents.filter((student)=>student.name === name)

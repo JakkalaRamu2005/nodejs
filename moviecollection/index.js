@@ -1,4 +1,4 @@
-const express = require("express");  // ❌ was "required"
+const express = require("express");  
 const app = express();
 
 app.use(express.json());
@@ -86,10 +86,14 @@ let movies = [
   }
 ];
 
-// GET all movies
-app.get("/movies", (request, response) => {
+// // GET all movies
+// app.get("/movies", (request, response) => {
+//   response.json(movies);
+// });
+
+app.get("/movies",(request, response)=>{
   response.json(movies);
-});
+})
 
 let nextId = 11;
 
@@ -135,6 +139,8 @@ app.put("/movies/:id", (request, response) => {
     response.status(404).json({ error: "Not found" });
   } else {
     movies[movieIndex] = {
+
+      
       id: movieId, // ❌ fixed this
       title,
       director,
@@ -161,7 +167,7 @@ app.delete("/movies/:id", (request, response) => {
 });
 
 // Start server
-app.listen(3000, (err) => {
+app.listen(5050, (err) => {
   err
     ? console.log("Error starting server:", err)
     : console.log("Server running on port 3000");
